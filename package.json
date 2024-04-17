@@ -1,4 +1,14 @@
 {
+  "name": "findit",
+  "version": "1.0.0",
+  "description": "no description",
+  "main": "index.ts",
+  "scripts": {
+    "server": "npm start --prefix server",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "author": "Sergiu Plesco",
   "dependencies": {
     "concurrently": "^8.2.2",
     "dotenv": "^16.4.5"
