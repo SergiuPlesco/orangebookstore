@@ -13,6 +13,13 @@ export const Route = createRootRoute({
         <Link to="/favorites" className="[&.active]:font-bold">
           Favorites
         </Link>
+        {/* <Link
+          to="/favorites/$favoriteId"
+          className="[&.active]:font-bold"
+          params={{ favoriteId: "123" }}
+        >
+          Favorite 123
+        </Link> */}
       </div>
 
       <Outlet />
