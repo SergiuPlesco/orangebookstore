@@ -1,5 +1,5 @@
 const Favorites = () => {
-  return <div>Favorites</div>;
+  return <div className="flex justify-center">Favorite books</div>;
 };
 
 export default Favorites;
