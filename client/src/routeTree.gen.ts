@@ -10,44 +10,44 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as IndexImport } from "./routes/index";
-import { Route as FavoritesIndexImport } from "./routes/favorites";
-import { Route as FavoritesFavoriteIdImport } from "./routes/favorites/$favoriteId";
+import { Route as rootRoute } from './routes/__root'
+import { Route as IndexImport } from './routes/index'
+import { Route as FavoritesIndexImport } from './routes/favorites/index'
+import { Route as FavoritesFavoriteIdImport } from './routes/favorites/$favoriteId'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
-  path: "/",
+  path: '/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const FavoritesIndexRoute = FavoritesIndexImport.update({
-  path: "/favorites/",
+  path: '/favorites/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const FavoritesFavoriteIdRoute = FavoritesFavoriteIdImport.update({
-  path: "/favorites/$favoriteId",
+  path: '/favorites/$favoriteId',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/": {
-      preLoaderRoute: typeof IndexImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/favorites/$favoriteId": {
-      preLoaderRoute: typeof FavoritesFavoriteIdImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/favorites/": {
-      preLoaderRoute: typeof FavoritesIndexImport;
-      parentRoute: typeof rootRoute;
-    };
+    '/': {
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/favorites/$favoriteId': {
+      preLoaderRoute: typeof FavoritesFavoriteIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/favorites/': {
+      preLoaderRoute: typeof FavoritesIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -57,6 +57,6 @@ export const routeTree = rootRoute.addChildren([
   IndexRoute,
   FavoritesFavoriteIdRoute,
   FavoritesIndexRoute,
-]);
+])
 
 /* prettier-ignore-end */
