@@ -24,7 +24,7 @@ const Search = () => {
   });
 
   return (
-    <div className="flex flex-col justify-center px-4">
+    <div className="flex flex-col justify-center items-center px-4 max-w-[1200px] mx-auto">
       <div className="flex justify-center">
         <div className=" min-w-[320px] max-w-[500px] px-2">
           <Input
