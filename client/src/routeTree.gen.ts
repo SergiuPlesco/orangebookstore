@@ -11,24 +11,24 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as FavoritesImport } from './routes/favorites'
+import { Route as BookIdImport } from './routes/$bookId'
 import { Route as IndexImport } from './routes/index'
-import { Route as FavoritesIndexImport } from './routes/favorites/index'
-import { Route as FavoritesFavoriteIdImport } from './routes/favorites/$favoriteId'
 
 // Create/Update Routes
 
+const FavoritesRoute = FavoritesImport.update({
+  path: '/favorites',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BookIdRoute = BookIdImport.update({
+  path: '/$bookId',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const FavoritesIndexRoute = FavoritesIndexImport.update({
-  path: '/favorites/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const FavoritesFavoriteIdRoute = FavoritesFavoriteIdImport.update({
-  path: '/favorites/$favoriteId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -40,12 +40,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/favorites/$favoriteId': {
-      preLoaderRoute: typeof FavoritesFavoriteIdImport
+    '/$bookId': {
+      preLoaderRoute: typeof BookIdImport
       parentRoute: typeof rootRoute
     }
-    '/favorites/': {
-      preLoaderRoute: typeof FavoritesIndexImport
+    '/favorites': {
+      preLoaderRoute: typeof FavoritesImport
       parentRoute: typeof rootRoute
     }
   }
@@ -55,8 +55,8 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
-  FavoritesFavoriteIdRoute,
-  FavoritesIndexRoute,
+  BookIdRoute,
+  FavoritesRoute,
 ])
 
 /* prettier-ignore-end */

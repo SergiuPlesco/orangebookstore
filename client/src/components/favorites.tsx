@@ -1,5 +1,8 @@
+import BooksList from "./booksList";
+import useBooksStore from "@/store/useBooksStore";
 const Favorites = () => {
-  return <div className="flex justify-center">Favorite books</div>;
+  const { favoriteBooks } = useBooksStore((state) => state);
+  return <BooksList list={favoriteBooks} />;
 };
 
 export default Favorites;
