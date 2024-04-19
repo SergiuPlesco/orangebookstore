@@ -10,7 +10,8 @@ const Book = () => {
   const { bookId } = useParams({ strict: false });
   const { isLoading, data } = useQuery({
     queryKey: ["book", bookId],
-    queryFn: () => fetch(`${apiURL}/books/${bookId}`).then((res) => res.json()),
+    queryFn: () =>
+      fetch(`${apiURL}/api/books/${bookId}`).then((res) => res.json()),
     enabled: Boolean(bookId),
   });
 

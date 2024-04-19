@@ -15,7 +15,6 @@ export const transformSearchResponse = (
 };
 
 export const transformBookResponse = (bookItem: Record<any, any>): Book => {
-  console.log(bookItem);
   return {
     id: bookItem.id,
     title: bookItem?.volumeInfo?.title,
