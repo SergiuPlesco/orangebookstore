@@ -4,4 +4,5 @@ export type Book = {
   thumbnail: string;
   subtitle: string;
   searchInfo: string;
+  description: string;
 };

@@ -16,7 +16,7 @@ const Book = () => {
   });
 
   return (
-    <div className="flex px-4 max-w-[1200px] mx-auto">
+    <div className="px-4 max-w-[1200px] mx-auto">
       <div className="flex justify-center mt-10">{isLoading && <Loader />}</div>
       <div>
         {data?.error && (

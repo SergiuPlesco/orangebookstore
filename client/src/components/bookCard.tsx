@@ -3,7 +3,7 @@ import { Book } from "@/types/books";
 
 const BookCard = ({ book }: { book: Book }) => {
   return (
-    <Card className="h-full w-full max-w-[300px]">
+    <Card className="h-full w-full">
       <CardHeader className="flex flex-row justify-between items-start w-[90%]">
         <div className="flex flex-col">
           <CardTitle>{book.title}</CardTitle>
@@ -17,7 +17,7 @@ const BookCard = ({ book }: { book: Book }) => {
             <img src={book.thumbnail} height={300} alt="Book title" />
           )}
         </div>
-        <p>{book.searchInfo}</p>
+        <p>{book.searchInfo ? book.searchInfo : book.description}</p>
       </CardContent>
     </Card>
   );

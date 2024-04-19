@@ -20,6 +20,6 @@ export const transformBookResponse = (bookItem: Record<any, any>): Book => {
     title: bookItem?.volumeInfo?.title,
     subtitle: bookItem?.volumeInfo?.subtitle,
     thumbnail: bookItem?.volumeInfo?.imageLinks?.thumbnail,
-    searchInfo: bookItem?.searchInfo?.textSnippet,
+    description: bookItem?.volumeInfo?.description,
   };
 };
