@@ -1,7 +1,10 @@
+import { Link } from "@tanstack/react-router";
 const Header = () => {
   return (
     <div className="flex flex-col items-center justify-center py-4 bg-[#44403c]">
-      <h1 className="text-[24px] text-[#f97316]">Orange Book Store</h1>
+      <Link to="/">
+        <h1 className="text-[24px] text-[#f97316]">Orange Book Store</h1>
+      </Link>
       <p className="text-xs text-slate-400 text-center">
         This app is deployed on onrender.com with a free account.
       </p>
