@@ -17,7 +17,7 @@ const Search = () => {
   const { isLoading, data } = useQuery({
     queryKey: ["repoData", searchQuery],
     queryFn: () =>
-      fetch(`${apiURL}/api/books/search?q=${searchQuery}`).then((res) =>
+      fetch(`${apiURL}/books/search?q=${searchQuery}`).then((res) =>
         res.json()
       ),
     enabled: Boolean(searchQuery),
