@@ -2,15 +2,15 @@ import { useParams } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import BookCard from "./bookCard";
 import Loader from "./loader";
+
+const apiURL = import.meta.env.VITE_API_URL;
+
 const Book = () => {
   //@ts-ignore
   const { bookId } = useParams({ strict: false });
   const { isLoading, data } = useQuery({
     queryKey: ["book", bookId],
-    queryFn: () =>
-      fetch(`http://localhost:3001/api/books/${bookId}`).then((res) =>
-        res.json()
-      ),
+    queryFn: () => fetch(`${apiURL}/books/${bookId}`).then((res) => res.json()),
     enabled: Boolean(bookId),
   });
 

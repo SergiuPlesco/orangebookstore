@@ -5,6 +5,8 @@ import Loader from "./loader";
 import BooksList from "./booksList";
 import useBooksStore from "@/store/useBooksStore";
 
+const apiURL = import.meta.env.VITE_API_URL;
+
 const Search = () => {
   const { searchQuery, setSearchQuery } = useBooksStore((state) => state);
 
@@ -15,8 +17,8 @@ const Search = () => {
   const { isLoading, data } = useQuery({
     queryKey: ["repoData", searchQuery],
     queryFn: () =>
-      fetch(`http://localhost:3001/api/books/search?q=${searchQuery}`).then(
-        (res) => res.json()
+      fetch(`${apiURL}/books/search?q=${searchQuery}`).then((res) =>
+        res.json()
       ),
     enabled: Boolean(searchQuery),
   });
