@@ -6,7 +6,7 @@ const Header = () => {
         This app is deployed on onrender.com with a free account.
       </p>
       <p className="text-xs text-slate-400 text-center">
-        It might take some time to spin up the service.
+        It might take 2-3min time to spin up the service.
       </p>
     </div>
   );
