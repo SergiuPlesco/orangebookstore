@@ -3,7 +3,9 @@ import type { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
-import axios from "axios";
+
+import { getBooks } from "./utils/getBooks.js";
+import { getBookById } from "./utils/getBook.js";
 
 const PORT = process.env.PORT || 3001;
 
@@ -14,32 +16,25 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
 app.use("/api/books/search", async (req: Request, res: Response) => {
-  const q = req.query.q;
+  const q = req.query.q as string;
 
   try {
-    const result = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${q}`
-    );
-    const data = result.data;
-    res.status(200).json(data);
-  } catch {
-    res
-      .status(404)
-      .json({ error: "Could not get any results for your search." });
+    const searchedBooks = await getBooks(q);
+    res.status(200).json(searchedBooks);
+  } catch (error) {
+    res.status(500).json({ error: "Could not perform search. Try again." });
   }
 });
 
 app.use("/api/books/:id", async (req: Request, res: Response) => {
-  const id = req.params.id;
+  const id = req.params.id as string;
 
   try {
-    const result = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes/${id}`
-    );
-    const data = result.data;
-    res.status(200).json(data);
-  } catch (error) {}
-  res.status(404).json({ error: "Searched book could not be found." });
+    const book = await getBookById(id);
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(500).json({ error: "Could not get the book. Try again." });
+  }
 });
 
 app.listen(PORT, () => {
