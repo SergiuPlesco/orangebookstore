@@ -19,7 +19,7 @@ const BookCard = ({ book }: { book: Book }) => {
         <CardContent className="flex flex-col gap-4">
           <div className="flex justify-center">
             {book.thumbnail && (
-              <img src={book.thumbnail} width={300} alt="Book title" />
+              <img src={book.thumbnail} height={300} alt="Book title" />
             )}
           </div>
           <p>{book.searchInfo}</p>
